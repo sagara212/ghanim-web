@@ -1662,12 +1662,6 @@ button {
   padding: 80px 0 56px;
 }
 
-.footer-two-col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 56px;
-  align-items: start;
-}
 
 /* Left */
 .footer-brand-row {
@@ -1697,7 +1691,6 @@ button {
   color: rgba(255, 255, 255, .35);
   margin-bottom: 32px;
   line-height: 1.6;
-  max-width: 320px;
 }
 
 /* Contact */
@@ -1865,29 +1858,287 @@ button {
   opacity: .3;
 }
 
-/* Responsive desktop */
-@media (min-width: 768px) {
-  .footer-two-col {
+/* Footer 3-column grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
+    gap: 48px 40px;
   }
 
-  .footer-map-wrap {
-    aspect-ratio: auto;
-    height: 380px;
+  .footer-col-brand {
+    grid-column: 1 / -1;
   }
 }
 
 @media (min-width: 1024px) {
-  .footer-two-col {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 80px;
+  .footer-grid {
+    grid-template-columns: 1.8fr 1fr 1.4fr;
+    gap: 0 64px;
+    align-items: start;
   }
 
-  .footer-map-wrap {
-    height: 420px;
+  .footer-col-brand {
+    grid-column: auto;
   }
+}
+
+/* Individual column */
+.footer-col-title {
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .35);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+/* Brand col */
+.footer-col-brand .footer-tagline {
+  max-width: 360px;
+  margin-bottom: 28px;
+}
+
+/* Nav list */
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-nav-list li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .45);
+  transition: color var(--t-fast), background var(--t-fast), padding-left var(--t-fast);
+}
+
+.footer-nav-list li a::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0;
+  transition: opacity var(--t-fast);
+  flex-shrink: 0;
+}
+
+.footer-nav-list li a:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, .04);
+  padding-left: 14px;
+}
+
+.footer-nav-list li a:hover::before {
+  opacity: 1;
+}
+
+/* WhatsApp CTA button in footer */
+.footer-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 11px 20px;
+  border-radius: var(--r-sm);
+  background: rgba(37, 211, 102, .1);
+  border: 1px solid rgba(37, 211, 102, .25);
+  color: #25d366;
+  font-size: .825rem;
+  font-weight: 700;
+  transition: background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+}
+
+.footer-wa-btn:hover {
+  background: rgba(37, 211, 102, .18);
+  border-color: rgba(37, 211, 102, .45);
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   LOKASI SECTION
+   ============================================================ */
+.lokasi {
+  background: var(--onyx-2);
+  padding: 100px 0;
+}
+
+.lokasi-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-top: 60px;
+}
+
+@media (min-width: 900px) {
+  .lokasi-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+/* Photos side */
+.lokasi-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.lokasi-photo-main,
+.lokasi-photo-side {
+  position: relative;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: var(--border-light);
+}
+
+.lokasi-photo-main {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/9;
+}
+
+.lokasi-photo-side {
+  aspect-ratio: 4/3;
+}
+
+.lokasi-photo-main img,
+.lokasi-photo-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.lokasi-photo-main:hover img,
+.lokasi-photo-side:hover img {
+  transform: scale(1.04);
+}
+
+.lokasi-photo-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(14, 14, 16, .75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, .85);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--r-full);
+  border: var(--border-light);
+}
+
+/* Map side */
+.lokasi-map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lokasi-map-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .lokasi-map-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lokasi-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255, 255, 255, .03);
+  border: var(--border-light);
+  border-radius: var(--r-md);
+  padding: 16px;
+}
+
+.lokasi-address-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  background: rgba(0, 194, 255, .08);
+  border: 1px solid rgba(0, 194, 255, .2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cyan);
+}
+
+.lokasi-address strong {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lokasi-address p {
+  font-size: .85rem;
+  color: rgba(255, 255, 255, .5);
+  line-height: 1.55;
+}
+
+.lokasi-map-wrap iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  filter: grayscale(.3) invert(.05);
+}
+
+@media (min-width: 900px) {
+  .lokasi-map-wrap iframe {
+    height: 360px;
+  }
+}
+
+.lokasi-map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, .04);
+  border: var(--border-light);
+  color: rgba(255, 255, 255, .5);
+  font-size: .825rem;
+  font-weight: 600;
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+}
+
+.lokasi-map-btn:hover {
+  background: rgba(0, 194, 255, .07);
+  border-color: rgba(0, 194, 255, .3);
+  color: var(--cyan);
+  transform: translateY(-1px);
 }
 
 /* ============================================================
